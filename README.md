@@ -1,6 +1,7 @@
 # EX01 Developing a Simple Webserver
-## Date:19/11/2026
-## Register no: 26006890 
+**Name:** Mohamed Fatheen  
+**Register No:** `26006890`  
+**Date:** `19/11/2026`
 
 ## AIM:
 To develop a simple webserver to serve html pages and display the Windows Specifications of your Laptop.
