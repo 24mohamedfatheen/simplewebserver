@@ -1,5 +1,6 @@
 # EX01 Developing a Simple Webserver
-## Date:
+## Date:19/11/2026
+## Register no: 26006890 
 
 ## AIM:
 To develop a simple webserver to serve html pages and display the Windows Specifications of your Laptop.
