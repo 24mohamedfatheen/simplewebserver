@@ -36,6 +36,7 @@ Start the server script and check for errors.
 Open a browser and navigate to http://127.0.0.1:8000 (or the assigned port).
 
 ## PROGRAM:
+~~~
 from http.server import BaseHTTPRequestHandler, HTTPServer
 import platform
 import subprocess
@@ -88,9 +89,9 @@ class Handler(BaseHTTPRequestHandler):
 
 
 server = HTTPServer(("127.0.0.1", 8000), Handler)
-print("Serving at http://127.0.0.1:8000")
+print("Serving at [http://127.0.0.1:8000](http://127.0.0.1:8000)")
 server.serve_forever()
-
+~~~
 
 ## OUTPUT:
 
