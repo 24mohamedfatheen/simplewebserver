@@ -39,58 +39,21 @@ Open a browser and navigate to http://127.0.0.1:8000 (or the assigned port).
 ~~~
 from http.server import BaseHTTPRequestHandler, HTTPServer
 import platform
-import subprocess
 
-
-def get_specs():
-    info = {
-        "OS": platform.system(),
-        "Release": platform.release(),
-        "Version": platform.version(),
-        "Architecture": platform.machine(),
-        "Processor": platform.processor(),
-    }
-    try:
-        out = subprocess.check_output(
-            "wmic computersystem get Model,TotalPhysicalMemory",
-            shell=True,
-            text=True,
-        )
-        lines = [x.strip() for x in out.splitlines() if x.strip()]
-        if len(lines) > 1:
-            parts = lines[1].rsplit(None, 1)
-            info["Model"] = parts[0]
-            ram_gb = round(int(parts[1]) / (1024**3), 2)
-            info["RAM"] = f"{ram_gb} GB"
-    except Exception:
-        pass
-    return info
-
-
-class Handler(BaseHTTPRequestHandler):
+class Server(BaseHTTPRequestHandler):
     def do_GET(self):
-        specs = get_specs()
-        items = "".join(f"<li><b>{k}:</b> {v}</li>" for k, v in specs.items())
-
-        page = f"""
-        <html>
-        <head><title>Laptop Specs</title></head>
-        <body>
-            <h2>Windows Laptop Specifications</h2>
-            <ul>{items}</ul>
-        </body>
-        </html>
+        html = f"""
+        <h2>Windows Specs</h2>
+        <p>OS: {platform.system()} {platform.release()}</p>
+        <p>Version: {platform.version()}</p>
+        <p>Arch: {platform.machine()}</p>
+        <p>CPU: {platform.processor()}</p>
         """
-
         self.send_response(200)
-        self.send_header("Content-type", "text/html")
         self.end_headers()
-        self.wfile.write(page.encode())
+        self.wfile.write(html.encode())
 
-
-server = HTTPServer(("127.0.0.1", 8000), Handler)
-print("Serving at [http://127.0.0.1:8000](http://127.0.0.1:8000)")
-server.serve_forever()
+HTTPServer(("127.0.0.1", 8000), Server).serve_forever()
 ~~~
 
 ## OUTPUT:
