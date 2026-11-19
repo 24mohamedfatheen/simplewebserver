@@ -57,6 +57,8 @@ HTTPServer(("127.0.0.1", 8000), Server).serve_forever()
 ~~~
 
 ## OUTPUT:
+<img width="1917" height="985" alt="image" src="https://github.com/user-attachments/assets/4733b444-74dc-49c1-bddc-1203593567cf" />
+<img width="1475" height="366" alt="image" src="https://github.com/user-attachments/assets/abc3a2d7-bca9-47dd-be42-3c9a802c595b" />
 
 
 ## RESULT:
